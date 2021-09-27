@@ -38,11 +38,13 @@ export default function Loginpage() {
   const mounted = useMounted()
 
   function handleRedirectToOrBack() {
-    if (location.state) {
-      history.replace(location.state.from)
-    } else {
-      history.replace('/profile')
-    }
+    // console.log(location?.state)
+    history.replace(location.state?.from ?? '/profile')
+    // if (location.state) {
+    //   history.replace(location.state?.from)
+    // } else {
+    //   history.replace('/profile')
+    // }
   }
 
   return (

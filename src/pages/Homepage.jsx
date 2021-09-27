@@ -11,15 +11,16 @@ import {
 import React from 'react'
 import { Layout } from '../components/Layout'
 import { useAuth } from '../contexts/AuthContext'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 export default function Homepage() {
-  const { user } = useAuth()
+  const { currentUser } = useAuth()
+  const location = useLocation()
+  console.log(location)
   return (
     <Layout>
       <Heading>Home page</Heading>
-      <Heading>{user}</Heading>
-      <Text my={6}></Text>
+      {/* <Text my={6}>{currentUser?.email}</Text> */}
 
       <Heading>
         Firebase Authentication
@@ -68,7 +69,7 @@ export default function Homepage() {
           </Badge>
         </ListItem>
       </OrderedList>
-      <Heading size='md' mt={20}>
+      <Heading size='md' mt={8}>
         Some other links (only for reference):
       </Heading>
       <List>
@@ -77,6 +78,9 @@ export default function Homepage() {
         </ListItem>
         <ListItem>
           <Link to='/forgot-password'>forgot page</Link>
+        </ListItem>
+        <ListItem>
+          <Link to='/test'>test page</Link>
         </ListItem>
       </List>
     </Layout>

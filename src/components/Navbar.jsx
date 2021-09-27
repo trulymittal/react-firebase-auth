@@ -13,6 +13,7 @@ import Navlink from './Navlink'
 
 export function Navbar() {
   const { toggleColorMode } = useColorMode()
+  // const { logout, currentUser } = useAuth()
   const { logout, currentUser } = useAuth()
 
   return (

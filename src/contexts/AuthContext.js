@@ -11,7 +11,26 @@ import {
   confirmPasswordReset,
 } from 'firebase/auth'
 
-const AuthContext = createContext()
+// const AuthContext = createContext()
+// const AuthContext = createContext({
+//   currentUser: null,
+//   signInWithGoogle: () => Promise,
+//   login: () => Promise,
+//   register: () => Promise,
+//   logout: () => Promise,
+//   forgotPassword: () => Promise,
+//   resetPassword: () => Promise,
+// })
+const AuthContext = createContext({
+  currentUser: null,
+  signInWithGoogle: null,
+  login: null,
+  register: null,
+  logout: null,
+  forgotPassword: null,
+  resetPassword: null,
+})
+
 export const useAuth = () => useContext(AuthContext)
 
 export default function AuthContextProvider({ children }) {
