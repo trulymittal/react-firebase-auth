@@ -3,20 +3,16 @@ import {
   chakra,
   Code,
   Heading,
+  List,
   ListItem,
   OrderedList,
-  Text,
-  List,
 } from '@chakra-ui/react'
 import React from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { Layout } from '../components/Layout'
 import { useAuth } from '../contexts/AuthContext'
-import { Link, useLocation } from 'react-router-dom'
 
 export default function Homepage() {
-  const { currentUser } = useAuth()
-  const location = useLocation()
-  console.log(location)
   return (
     <Layout>
       <Heading>Home page</Heading>

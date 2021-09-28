@@ -11,24 +11,14 @@ import {
   confirmPasswordReset,
 } from 'firebase/auth'
 
-// const AuthContext = createContext()
-// const AuthContext = createContext({
-//   currentUser: null,
-//   signInWithGoogle: () => Promise,
-//   login: () => Promise,
-//   register: () => Promise,
-//   logout: () => Promise,
-//   forgotPassword: () => Promise,
-//   resetPassword: () => Promise,
-// })
 const AuthContext = createContext({
   currentUser: null,
-  signInWithGoogle: null,
-  login: null,
-  register: null,
-  logout: null,
-  forgotPassword: null,
-  resetPassword: null,
+  signInWithGoogle: () => Promise,
+  login: () => Promise,
+  register: () => Promise,
+  logout: () => Promise,
+  forgotPassword: () => Promise,
+  resetPassword: () => Promise,
 })
 
 export const useAuth = () => useContext(AuthContext)
@@ -57,13 +47,9 @@ export default function AuthContextProvider({ children }) {
     return createUserWithEmailAndPassword(auth, email, password)
   }
 
-  // <p><a href='%LINK%'>%LINK%</a></p>
-
   function forgotPassword(email) {
     return sendPasswordResetEmail(auth, email, {
-      // url: `http://localhost:3000/reset-password?email=${email}`,
       url: `http://localhost:3000/login`,
-      // handleCodeInApp: true,
     })
   }
 

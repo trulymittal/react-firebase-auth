@@ -4,6 +4,7 @@ import {
   Redirect,
   Route,
   Switch,
+  useLocation,
 } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import ForgotPasswordPage from '../pages/ForgotPasswordPage'
@@ -45,14 +46,21 @@ export default function AppRouter(props) {
 function ProtectedRoute(props) {
   const { currentUser } = useAuth()
   const { path } = props
-  console.log(path)
+  console.log('path', path)
+  const location = useLocation()
+  console.log('location state', location.state)
+
   if (
     path === '/login' ||
     path === '/register' ||
     path === '/forgot-password' ||
     path === '/reset-password'
   ) {
-    return currentUser ? <Redirect to='/profile' /> : <Route {...props} />
+    return currentUser ? (
+      <Redirect to={location.state?.from ?? '/profile'} />
+    ) : (
+      <Route {...props} />
+    )
   }
   return currentUser ? (
     <Route {...props} />
